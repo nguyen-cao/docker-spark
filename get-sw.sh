@@ -13,7 +13,7 @@ APACHE_MIRROR="http://mirror.dsrg.utoronto.ca/apache/"
 SPARK_TARFILE="spark-${SPARK_VERSION}-bin-hadoop${SPARK_HADOOP_COMPAT}.tgz"
 SPARK_APACHE_PATH="spark/spark-${SPARK_VERSION}/${SPARK_TARFILE}"
 
-mkdir -p sw
+mkdir -p base/sw
 # wget -nc ${APACHE_MIRROR}${HADOOP_APACHE_PATH} -O sw/${HADOOP_TARFILE}
-wget -nc ${APACHE_MIRROR}${SPARK_APACHE_PATH} -O sw/${SPARK_TARFILE}
+wget -nc ${APACHE_MIRROR}${SPARK_APACHE_PATH} -O base/sw/${SPARK_TARFILE}
 
