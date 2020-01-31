@@ -19,5 +19,5 @@ build worker
 build yarn-client
 build submit
 build java-template template/java
-build scala-template template/scala
+#build scala-template template/scala
 build python-template template/python

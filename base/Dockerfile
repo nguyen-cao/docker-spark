@@ -13,12 +13,13 @@ ENV HADOOP_VERSION=2.7
 COPY wait-for-step.sh /
 COPY execute-step.sh /
 COPY finish-step.sh /
+COPY requirements.txt /
 
 #COPY bde-spark.css /css/org/apache/spark/ui/static/timeline-view.css
 
 COPY ./sw/spark-${SPARK_VERSION}-bin-hadoop${HADOOP_VERSION}.tgz spark-${SPARK_VERSION}-bin-hadoop${HADOOP_VERSION}.tgz
 
-RUN apk add --no-cache curl bash openjdk8-jre python3 py-pip nss libc6-compat \
+RUN apk add --no-cache build-base curl bash openjdk8-jre python3 python3-dev py-pip nss libc6-compat \
       && ln -s /lib64/ld-linux-x86-64.so.2 /lib/ld-linux-x86-64.so.2 \
       && chmod +x *.sh \
       # && wget https://archive.apache.org/dist/spark/spark-${SPARK_VERSION}/spark-${SPARK_VERSION}-bin-hadoop${HADOOP_VERSION}.tgz \
@@ -35,3 +36,6 @@ RUN chmod +x /wait-for-step.sh && chmod +x /execute-step.sh && chmod +x /finish-
 # Fix the value of PYTHONHASHSEED
 # Note: this is needed when you use Python 3.3 or greater
 ENV PYTHONHASHSEED 1
+
+# Install Python packages
+RUN pip3 install -r /requirements.txt
