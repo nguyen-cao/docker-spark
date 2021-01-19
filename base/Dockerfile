@@ -1,14 +1,13 @@
 FROM alpine:3.10
 
-MAINTAINER Erika Pauwels <erika.pauwels@tenforce.com>
-MAINTAINER Gezim Sejdiu <g.sejdiu@gmail.com>
+LABEL maintainer="Gezim Sejdiu <g.sejdiu@gmail.com>, Giannis Mouchakis <gmouchakis@gmail.com>"
 
 ENV ENABLE_INIT_DAEMON true
 ENV INIT_DAEMON_BASE_URI http://identifier/init-daemon
 ENV INIT_DAEMON_STEP spark_master_init
 
-ENV SPARK_VERSION=2.4.3
-ENV HADOOP_VERSION=2.7
+ENV SPARK_VERSION=3.0.1
+ENV HADOOP_VERSION=3.2
 
 COPY wait-for-step.sh /
 COPY execute-step.sh /
