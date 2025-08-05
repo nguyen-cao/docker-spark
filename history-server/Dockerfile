@@ -2,9 +2,8 @@ FROM bde2020/spark-base:3.3.0-hadoop3.3
 
 LABEL maintainer="Gezim Sejdiu <g.sejdiu@gmail.com>, Giannis Mouchakis <gmouchakis@gmail.com>"
 
-ENV SPARK_MASTER_NAME spark-master
-ENV SPARK_MASTER_PORT 7077
+COPY history-server.sh /
 
-COPY submit.sh /
+EXPOSE 18081
 
-CMD ["/bin/bash", "/submit.sh"]
+CMD ["/bin/bash", "/history-server.sh"]

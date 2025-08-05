@@ -2,7 +2,7 @@
 
 set -e
 
-TAG=3.1.1-hadoop3.2
+TAG=3.3.0-hadoop3.3
 
 build() {
     NAME=$1
@@ -13,10 +13,18 @@ build() {
     cd -
 }
 
-build base
-build master
-build worker
-build submit
-build java-template template/java
-build scala-template template/scala
-build python-template template/python
+if [ $# -eq 0 ]
+  then
+    build base
+    build master
+    build worker
+    build history-server
+    build submit
+    build maven-template template/maven
+    build sbt-template template/sbt
+    build python-template template/python
+    
+    build python-example examples/python
+  else
+    build $1 $2
+fi
